@@ -1,0 +1,31 @@
+generator client {
+  provider = "prisma-client-js"
+}
+//GET = buscar informações 
+//POST = cadastrar uma nova informação 
+//PUT = atualizar as informações de uma entidade
+//PATCH = atualizar uma informação unica de uam entidade
+//DELETE = Deletar ua informação 
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+//utilizando o prisma, devo criar minhas tabelas, colunas, etc com a sitaxe do prisma
+// conforme comandos a baixo
+
+model Feedback {
+id String @id @default(uuid()) //UUID -> Universal Unique ID serve para aumentar a segurança
+
+type String
+comment String
+screenshot String?
+
+  @@map("feedbacks") // Comando usado apenas para renomear tabela pra uso de boas práticas, tudo minusculo e no plurar  
+
+}
+
+//npx prisma migrate dev **para ambiente de DEV**
+//npx prisma migrate deploy **ambiente de produção**
+//mpx prisma studio **serve para abrir um ambiente de studio para visualização do banco88 
